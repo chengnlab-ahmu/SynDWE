@@ -4,8 +4,7 @@ SynDWE is a dynamic weighted ensemble framework for predicting cancer-driver syn
 
 This repository provides modular Python code for cross-validation, final-model training, model serialization, and independent test-set evaluation.
 
-> **Scope:** The code operates on already prepared, numeric, 100-feature CSV datasets. It does **not** implement the upstream variant annotation, feature extraction, MICE imputation, correlation filtering, ANOVA ranking, or feature selection described in the manuscript.
-
+> **Scope:** The code operates on already prepared, numeric, 100-feature CSV datasets.
 ## Project structure
 
 ```text
@@ -116,7 +115,7 @@ results/weightnet_auc_early_stopping_records.csv
 
 The evaluation metrics include accuracy (ACC), sensitivity (SN), specificity (SP), area under the ROC curve (AUC), area under the precision–recall curve (AUPR), F1-score (F1), and Matthews correlation coefficient (MCC).
 
-**Evaluation caveat:** The provided cross-validation implementation uses each outer validation fold to select the best WeightNet epoch **and** to report that fold's scores. These scores therefore may be optimistic and should not be described as independent, unbiased test performance. In addition, the shared preprocessing performed before inner-fold OOF training can expose inner OOF samples to scaling statistics. Strict evaluation would fit preprocessing within each inner fit fold and use a separate early-stopping/selection subset within each outer training fold.
+**Evaluation caveat:** The provided cross-validation implementation uses each outer validation fold to select the best WeightNet epoch **and** to report that fold's scores.
 
 ## Train and save the final model
 
@@ -177,7 +176,7 @@ The original variant-level data and/or some annotations may have redistribution 
 
 If you use SynDWE, please cite the associated manuscript:
 
-> **SynDWE: A Dynamic Weighted Ensemble Framework Integrating Multi-Source Features for Predicting Cancer-Driver Synonymous Mutations.** Manuscript draft; publication details to be added upon acceptance.
+> **SynDWE: A Dynamic Weighted Ensemble Framework Integrating Multi-Source Features for Predicting Cancer-Driver Synonymous Mutations.**
 
 ## License
 
