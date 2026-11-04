@@ -65,7 +65,7 @@ AF,CADD_RAWSCORE,SYNVEP_SCORE_AVG,...,XLMR_788,LABEL
 
 - `sequence_id` is **not required**. If present, the data loader removes it from model inputs.
 - Column names must match those used for training; during evaluation, the loader automatically reorders columns to the saved feature order.
-- Missing (`NaN`), infinite, nonnumeric, and extra/missing feature values are rejected. Complete imputation and feature selection **before** running this repository.
+- Missing (`NaN`), infinite, nonnumeric, and extra/missing feature values are rejected.
 - The current implementation applies a `StandardScaler` fitted on training data and saves it with the model. This is distinct from the Min–Max normalization described in the manuscript's upstream feature-engineering section; verify the exact preprocessing protocol when reproducing reported results.
 - For external data, do not recompute a new scaler using test-set values.
 
