@@ -14,7 +14,7 @@ Usage
 python -m scripts.run_cv
 
 python -m scripts.run_cv \
-    --train data/train_top100.csv \
+    --train data/train.csv \
     --output results/
 """
 
