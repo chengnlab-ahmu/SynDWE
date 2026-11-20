@@ -19,7 +19,7 @@ python -m scripts.run_train
 python -m scripts.run_train \
     --train data/train.csv \
     --output checkpoints/ \
-    --epochs 26
+    --epochs 77
 """
 
 import argparse
