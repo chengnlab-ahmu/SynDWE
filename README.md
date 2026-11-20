@@ -123,10 +123,10 @@ The evaluation metrics include accuracy (ACC), sensitivity (SN), specificity (SP
 python -m scripts.run_train \
     --train data/train.csv \
     --output checkpoints/ \
-    --epochs 26
+    --epochs 77
 ```
 
-The current final-training implementation trains WeightNet for **26 fixed epochs** (from the previously provided final-training script), generates inner five-fold OOF signals, and saves **five fold-fitted estimators per base classifier** for averaged inference. This differs from the older full-data final-training script that refit one estimator per classifier; use model files produced by this repository's `run_train.py` with its `evaluate.py`.
+The current final-training implementation trains WeightNet for **77 fixed epochs** (from the previously provided final-training script), generates inner five-fold OOF signals, and saves **five fold-fitted estimators per base classifier** for averaged inference. This differs from the older full-data final-training script that refit one estimator per classifier; use model files produced by this repository's `run_train.py` with its `evaluate.py`.
 
 Generated artifacts:
 
@@ -136,7 +136,7 @@ checkpoints/weightnet.pth           # WeightNet state_dict and dimensions
 checkpoints/metadata.json           # Model configuration and feature schema
 ```
 
-The `26`-epoch choice is not automatically selected from cross-validation. For publication-quality reproducibility, document how the final training schedule was chosen.
+The `77`-epoch choice is not automatically selected from cross-validation. For publication-quality reproducibility, document how the final training schedule was chosen.
 
 ## Evaluate independent datasets
 
