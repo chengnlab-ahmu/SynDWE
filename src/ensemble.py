@@ -119,40 +119,23 @@ def build_pseudo_labels(
     y_train,
     threshold=CLASSIFICATION_THRESHOLD
 ):
-    """
-    Construct target weight distributions
-    exactly as in the original implementation.
-    """
+    """Construct target weight distributions for WeightNet."""
 
-    meta_bin = (
-        meta_train > threshold
-    ).astype(int)
+    meta_bin = (meta_train > threshold).astype(int)
+    true_labels = y_train.reshape(-1, 1)
+    pseudo = (meta_bin == true_labels).astype(np.float32)
 
-    pseudo = (
-        meta_bin == y_train.reshape(-1, 1)
-    ).astype(np.float32)
-
-    row_sum = pseudo.sum(
-        axis=1,
-        keepdims=True
-    )
-
-    zero_row = row_sum.squeeze() == 0
-
-    # Original fallback behavior:
-    # use predicted probabilities when
-    # all base classifiers are incorrect.
-    if zero_row.any():
-
-        pseudo[zero_row] = meta_train[zero_row]
-
-        row_sum = pseudo.sum(
-            axis=1,
-            keepdims=True
+    all_wrong = ~pseudo.any(axis=1)
+    if all_wrong.any():
+        wrong_probs = meta_train[all_wrong]
+        true_class_probs = np.where(
+            true_labels[all_wrong] == 1,
+            wrong_probs,
+            1.0 - wrong_probs
         )
+        pseudo[all_wrong] = true_class_probs + 1e-8
 
-    pseudo /= row_sum + 1e-12
-
+    pseudo /= pseudo.sum(axis=1, keepdims=True)
     return pseudo
 
 
