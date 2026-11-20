@@ -51,7 +51,7 @@ def main():
     parser.add_argument(
         "--epochs",
         type=int,
-        default=26,
+        default=77,
         help="Number of WeightNet training epochs"
     )
 
