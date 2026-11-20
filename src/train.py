@@ -617,7 +617,7 @@ def train_weight_net_fixed_epochs(
     X_train,
     pseudo_labels,
     device,
-    epochs=26,
+    epochs=77,
     batch_size=32
 ):
     """
@@ -708,7 +708,7 @@ def train_weight_net_fixed_epochs(
 def train_final_model(
     train_file=TRAIN_FILE,
     save_dir=CHECKPOINT_DIR,
-    epochs=26
+    epochs=77
 ):
     """
     Train the final SynDWE model.
